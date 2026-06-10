@@ -11,10 +11,13 @@ window.submitComplaint = async function () {
     const name =
         document.getElementById("name").value;
 
-    const complaint =
+    const category =
+        document.getElementById("category").value;
+    
+        const complaint =
         document.getElementById("complaint").value;
 
-    if (!name || !complaint) {
+    if (!name || !category || !complaint) {
         alert("Please fill all fields");
         return;
     }
@@ -25,6 +28,7 @@ window.submitComplaint = async function () {
             collection(db, "complaints"),
             {
                 name: name,
+                category: category,
                 complaint: complaint,
                 createdAt: new Date()
             }
@@ -33,8 +37,13 @@ window.submitComplaint = async function () {
         alert("Complaint Saved!");
         loadComplaints();
 
-        document.getElementById("name").value = "";
-        document.getElementById("complaint").value = "";
+        alert("Complaint Saved!");
+
+document.getElementById("name").value = "";
+document.getElementById("category").value = "";
+document.getElementById("complaint").value = "";
+
+loadComplaints();
 
     } catch (error) {
 
@@ -60,6 +69,7 @@ async function loadComplaints() {
         complaintsList.innerHTML += `
             <div>
                 <h3>${data.name}</h3>
+                <p><strong>Category:</strong> ${data.category}</p>
                 <p>${data.complaint}</p>
                 <hr>
             </div>
