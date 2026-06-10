@@ -1,13 +1,69 @@
-function submitComplaint() {
+import { db } from "./firebase.js";
 
-    let name =
+import {
+  collection,
+  addDoc,
+  getDocs
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+
+window.submitComplaint = async function () {
+
+    const name =
         document.getElementById("name").value;
 
-    let complaint =
+    const complaint =
         document.getElementById("complaint").value;
 
-    console.log(name);
-    console.log(complaint);
+    if (!name || !complaint) {
+        alert("Please fill all fields");
+        return;
+    }
 
-    alert("Complaint Submitted!");
+    try {
+
+        await addDoc(
+            collection(db, "complaints"),
+            {
+                name: name,
+                complaint: complaint,
+                createdAt: new Date()
+            }
+        );
+
+        alert("Complaint Saved!");
+        loadComplaints();
+
+        document.getElementById("name").value = "";
+        document.getElementById("complaint").value = "";
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert("Error saving complaint");
+    }
 }
+async function loadComplaints() {
+
+    const complaintsList =
+        document.getElementById("complaintsList");
+
+    complaintsList.innerHTML = "";
+
+    const querySnapshot =
+        await getDocs(collection(db, "complaints"));
+
+    querySnapshot.forEach((doc) => {
+
+        const data = doc.data();
+
+        complaintsList.innerHTML += `
+            <div>
+                <h3>${data.name}</h3>
+                <p>${data.complaint}</p>
+                <hr>
+            </div>
+        `;
+    });
+}
+loadComplaints();
