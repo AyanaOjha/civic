@@ -15,21 +15,21 @@ A civic grievance platform that allows citizens to submit and view complaints us
 - CSS
 - JavaScript
 - Firebase Firestore
-Version 1 ✅
+## Version 1 ✅
 - Complaint submission
 - Firebase storage
 - View complaints
 - Categories
 
-Version 2
+## Version 2
 - Dashboard analytics
 - Filtering
 
-Version 3
+## Version 3
 - Government scheme assistant
 - Local language support
 
-Version 4
+## Version 4
 - AI complaint categorization
 - Maps
 ## Features
