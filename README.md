@@ -32,3 +32,10 @@ Version 3
 Version 4
 - AI complaint categorization
 - Maps
+## Features
+
+- Submit civic complaints
+- Categorize complaints
+- Store complaints in Firebase Firestore
+- View all complaints
+- Real-time cloud database integration
