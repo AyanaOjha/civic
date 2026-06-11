@@ -34,10 +34,7 @@ window.submitComplaint = async function () {
             }
         );
 
-        alert("Complaint Saved!");
-        loadComplaints();
-
-        alert("Complaint Saved!");
+       alert("Complaint Saved!");
 
 document.getElementById("name").value = "";
 document.getElementById("category").value = "";
@@ -57,6 +54,20 @@ async function loadComplaints() {
     const complaintsList =
         document.getElementById("complaintsList");
 
+
+    const selectedCategory =
+        document.getElementById("filterCategory").value;
+        const dashboard =
+    document.getElementById("dashboard");
+
+let total = 0;
+
+let roads = 0;
+let water = 0;
+let electricity = 0;
+let garbage = 0;
+let streetlights = 0;
+    
     complaintsList.innerHTML = "";
 
     const querySnapshot =
@@ -64,9 +75,38 @@ async function loadComplaints() {
 
     querySnapshot.forEach((doc) => {
 
-        const data = doc.data();
+    const data = doc.data();
 
-        complaintsList.innerHTML += `
+    total++;
+
+    if (data.category === "Roads")
+        roads++;
+
+    if (data.category === "Water")
+        water++;
+
+    if (data.category === "Electricity")
+        electricity++;
+
+    if (data.category === "Garbage")
+        garbage++;
+
+    if (data.category === "Streetlights")
+        streetlights++;
+
+    if (
+        selectedCategory !== "All" &&
+        data.category !== selectedCategory
+    ) {
+        return;
+    }
+
+    complaintsList.innerHTML += `
+        
+
+
+
+
             <div>
                 <h3>${data.name}</h3>
                 <p><strong>Category:</strong> ${data.category}</p>
@@ -75,5 +115,17 @@ async function loadComplaints() {
             </div>
         `;
     });
+    dashboard.innerHTML = `
+    <p><strong>Total Complaints:</strong> ${total}</p>
+
+    <p>Roads: ${roads}</p>
+    <p>Water: ${water}</p>
+    <p>Electricity: ${electricity}</p>
+    <p>Garbage: ${garbage}</p>
+    <p>Streetlights: ${streetlights}</p>
+`;
 }
 loadComplaints();
+document
+    .getElementById("filterCategory")
+    .addEventListener("change", loadComplaints);
