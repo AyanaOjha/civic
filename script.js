@@ -94,6 +94,10 @@ let streetlights = 0;
     if (data.category === "Streetlights")
         streetlights++;
 
+    if (!data.category) {
+    data.category = "Uncategorized";
+}
+
     if (
         selectedCategory !== "All" &&
         data.category !== selectedCategory
@@ -102,12 +106,7 @@ let streetlights = 0;
     }
 
     complaintsList.innerHTML += `
-        
-
-
-
-
-            <div>
+    <div class="complaint-card">
                 <h3>${data.name}</h3>
                 <p><strong>Category:</strong> ${data.category}</p>
                 <p>${data.complaint}</p>
@@ -115,14 +114,16 @@ let streetlights = 0;
             </div>
         `;
     });
-    dashboard.innerHTML = `
-    <p><strong>Total Complaints:</strong> ${total}</p>
+   dashboard.innerHTML = `
+    <h3>Total Complaints: ${total}</h3>
 
-    <p>Roads: ${roads}</p>
-    <p>Water: ${water}</p>
-    <p>Electricity: ${electricity}</p>
-    <p>Garbage: ${garbage}</p>
-    <p>Streetlights: ${streetlights}</p>
+    <div class="stats">
+        <p>🛣 Roads: ${roads}</p>
+        <p>💧 Water: ${water}</p>
+        <p>⚡ Electricity: ${electricity}</p>
+        <p>🗑 Garbage: ${garbage}</p>
+        <p>💡 Streetlights: ${streetlights}</p>
+    </div>
 `;
 }
 loadComplaints();
