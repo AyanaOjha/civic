@@ -127,6 +127,133 @@ let streetlights = 0;
 `;
 }
 loadComplaints();
+window.findSchemes = function () {
+
+    const userType =
+        document.getElementById("userType").value;
+
+    const results =
+        document.getElementById("schemeResults");
+
+    let schemes = [];
+
+    if (userType === "Student") {
+
+         schemes = [
+    {
+        name: "National Scholarship Portal",
+        eligibility: "Students pursuing education",
+        benefit: "Access multiple scholarships"
+    },
+    {
+        name: "PM Yasasvi Scholarship",
+        eligibility: "Meritorious students",
+        benefit: "Financial support for studies"
+    },
+    {
+        name: "Post Matric Scholarship",
+        eligibility: "Students after Class 10",
+        benefit: "Education assistance"
+    }
+];
+    }
+
+    else if (userType === "Farmer") {
+
+        schemes = [
+    {
+        name: "PM Kisan",
+        eligibility: "Small and marginal farmers",
+        benefit: "Income support"
+    },
+    {
+        name: "Kisan Credit Card",
+        eligibility: "Eligible farmers",
+        benefit: "Low-interest agricultural loans"
+    },
+    {
+        name: "Soil Health Card",
+        eligibility: "All farmers",
+        benefit: "Soil quality recommendations"
+    }
+];
+    }
+
+    else if (userType === "Woman") {
+
+        schemes = [
+        {
+            name: "Beti bachao Beti padhao",
+            eligibility: "All girls under the age of 10",
+            benefit:"Development of girls"
+        },
+        {
+            name: "Sukanya Samriddhi Yojna",
+            eligibility: "All girls under the age of 10",
+            benefit:"Future financial planning",
+            
+        },
+        {
+            name: "PM Matru Vandana Yojna",
+            eligibility: "Pregnant women",
+            benefit:"Maternity leave benefits"
+        }
+        ];
+    }
+
+    else if (userType === "Senior Citizen") {
+
+        schemes = [
+            {
+                name:"Atal Pension Yojana",
+                eligibility:"Between the ages of 18 to 40",
+                benefit : "Social Security Scheme"
+            },
+            {
+                name: "Senior Citizen Savings Scheme",
+                eligibility:"Above 60 years old",
+                benefit:" Retirement Scheme"
+            },
+
+        ];
+    }
+
+    else if (userType === "Job Seeker") {
+
+       schemes = [
+    {
+        name: "Skill India",
+        eligibility: "Above 14 years old",
+        benefit: "Skill development"
+    },
+    {
+        name: "PM Kaushal Vikas Yojna",
+        eligibility: "Ages between 15 to 45",
+        benefit: "Skill training and certification"
+    },
+    {
+        name: "National Career Service",
+        eligibility: "Above 14 years old",
+        benefit: "Career Counselling"
+    }
+];
+    }
+
+    results.innerHTML = `
+    <h3>Recommended Schemes</h3>
+
+    ${schemes.map(s => `
+        <div class="complaint-card">
+            <h4>${s.name}</h4>
+            <p><strong>Eligibility:</strong> ${s.eligibility}</p>
+            <p><strong>Benefit:</strong> ${s.benefit}</p>
+        </div>
+    `).join("")}
+`;
+    
+}
+
+
 document
     .getElementById("filterCategory")
     .addEventListener("change", loadComplaints);
