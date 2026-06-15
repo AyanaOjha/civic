@@ -34,16 +34,17 @@ A civic grievance platform that allows citizens to submit and view complaints us
 - Maps
 ## Features
 
-- Submit civic complaints
+### Civic Grievance Portal
+- Submit complaints
 - Categorize complaints
-- Store complaints in Firebase Firestore
-- View all complaints
-- Real-time cloud database integration
-## Features
+- View complaints
+- Filter complaints
+- Dashboard analytics
 
-- Complaint Submission
-- Firebase Firestore Integration
-- Category Filtering
-- Dashboard Analytics
-- Government Scheme Assistant
-- Personalized Scheme Recommendations
+### Government Scheme Assistant
+- Student schemes
+- Farmer schemes
+- Women welfare schemes
+- Senior citizen schemes
+- Job seeker schemes
+- Eligibility and benefit information
