@@ -39,3 +39,11 @@ A civic grievance platform that allows citizens to submit and view complaints us
 - Store complaints in Firebase Firestore
 - View all complaints
 - Real-time cloud database integration
+## Features
+
+- Complaint Submission
+- Firebase Firestore Integration
+- Category Filtering
+- Dashboard Analytics
+- Government Scheme Assistant
+- Personalized Scheme Recommendations
