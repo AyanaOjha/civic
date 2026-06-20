@@ -8,9 +8,13 @@
 <body>
 
     <div class="container"></div>
-    <h1>CivicSense</h1>
+    <select id="languageSelect">
+    <option value="en">English</option>
+    <option value="hi">हिन्दी</option>
+</select>
+    <h1 id="mainTitle">CivicSense</h1>
 
-    <h2>Submit a Complaint</h2>
+    <h2 id="complaintHeading">Submit a Complaint</h2>
 
     <input type="text" id="name" placeholder="Your Name">
 
@@ -33,7 +37,7 @@
     <button onclick="submitComplaint()">
         Submit
     </button>
-    <h2>Government Scheme Assistant</h2>
+    <h2 id="schemeHeading">Government Scheme Assistant</h2>
 
 <select id="userType">
     <option value="">Select User Type</option>
@@ -51,14 +55,14 @@
 <div id="schemeResults"></div>
 
 <hr>
-    <h2>Dashboard</h2>
+    <h2 id="dashboardHeading">Dashboard</h2>
 
 <div id="dashboard">
     Loading...
 </div>
 
 <hr>
-    <h2>Filter Complaints</h2>
+    <h2 id="filterHeading">Filter Complaints</h2>
 
 <select id="filterCategory">
     <option value="All">All</option>
@@ -70,7 +74,7 @@
 </select>
 
 <br><br>
-    <h2>All Complaints</h2>
+    <h2 id="complaintsHeading">All Complaints</h2>
 
 <div id="complaintsList"></div>
 
